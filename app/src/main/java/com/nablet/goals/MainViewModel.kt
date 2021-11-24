@@ -14,13 +14,13 @@ import javax.inject.Inject
 
 class MainViewModel(
     private val repository: MainRepository
-): ViewModel() {
-
-    val goals: LiveData<List<Goal>>
-        get() = repository.goals.asLiveData()
-
-    fun addGoal(goal: Goal) = viewModelScope.launch {
-        repository.addGoal(goal)
-    }
-
+) : ViewModel() {
+	
+	val goals: LiveData<List<Goal>>
+		get() = repository.goals.asLiveData()
+	
+	fun addGoal(goal: Goal) = viewModelScope.launch {
+		repository.addGoal(goal)
+	}
+	
 }
