@@ -7,11 +7,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
-	
-	val viewModel: MainViewModel by viewModels()
-	
-	override fun onStart() {
-		super.onStart()
-	}
-	
+
+	private val viewModel: MainViewModel by viewModels()
+
 }
