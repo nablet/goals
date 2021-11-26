@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import com.nablet.goals.models.Constants
+import com.nablet.goals.models.Goal
 
 
 @Database(entities = [Goal::class], version = 1, exportSchema = false)
@@ -22,7 +22,7 @@ abstract class GoalDatabase : RoomDatabase() {
 				val instance = Room.databaseBuilder(
                     context.applicationContext,
                     GoalDatabase::class.java,
-                    "goal_db"
+                    Constants.DATABASE_NAME
                 ).build()
 				INSTANCE = instance
 				return@synchronized instance
