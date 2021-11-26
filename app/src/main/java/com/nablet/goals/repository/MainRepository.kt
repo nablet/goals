@@ -3,6 +3,7 @@ package com.nablet.goals.repository
 import com.nablet.goals.models.Goal
 import com.nablet.goals.repository.room.GoalDao
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 
 interface MainRepository {
@@ -10,7 +11,7 @@ interface MainRepository {
 	suspend fun addGoal(goal: Goal)
 }
 
-class MainRepositoryImpl(
+class MainRepositoryImpl @Inject constructor(
 	private val goalDao: GoalDao
 ) : MainRepository {
 	
