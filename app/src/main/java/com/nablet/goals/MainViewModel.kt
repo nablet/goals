@@ -19,7 +19,7 @@ class MainViewModel @Inject constructor(
 	val goals: LiveData<List<Goal>>
 		get() = repository.goals.asLiveData()
 	
-	suspend fun addGoal(goal: Goal) = viewModelScope.launch {
+	fun addGoal(goal: Goal) = viewModelScope.launch {
 		repository.addGoal(goal)
 	}
 	

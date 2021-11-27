@@ -1,13 +1,23 @@
 package com.nablet.goals
 
-import androidx.activity.viewModels
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-	private val viewModel: MainViewModel by viewModels()
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    fun onSettingsClicked(m: MenuItem) {
+    	findNavController(R.id.nav_host_fragment)
+			.navigate(R.id.settingsFragment)
+    }
 
 }
