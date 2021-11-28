@@ -23,4 +23,11 @@ class MainViewModel @Inject constructor(
 		repository.addGoal(goal)
 	}
 	
+	fun delete(id: Int? = null, goal: Goal? = null) = viewModelScope.launch {
+		when {
+			id != null -> repository.deleteGoal(id)
+			goal != null -> repository.deleteGoal(goal.id)
+		}
+	}
+	
 }

@@ -24,7 +24,7 @@ object DatabaseModule {
 			context.applicationContext,
 			GoalDatabase::class.java,
 			Constants.DATABASE_NAME
-		).build()
+		).fallbackToDestructiveMigration().build()
 	}
 	
 	@Singleton

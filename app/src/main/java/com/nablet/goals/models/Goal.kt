@@ -12,4 +12,5 @@ data class Goal(
 ) {
 	@PrimaryKey(autoGenerate = true)
 	var id: Int = 0
+	var dateAdded: Long = System.currentTimeMillis()
 }

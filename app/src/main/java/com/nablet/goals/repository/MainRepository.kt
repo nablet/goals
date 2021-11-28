@@ -9,6 +9,7 @@ import javax.inject.Inject
 interface MainRepository {
 	val goals: Flow<List<Goal>>
 	suspend fun addGoal(goal: Goal)
+	suspend fun deleteGoal(id: Int)
 }
 
 class MainRepositoryImpl @Inject constructor(
@@ -20,6 +21,10 @@ class MainRepositoryImpl @Inject constructor(
 	
 	override suspend fun addGoal(goal: Goal) {
 		goalDao.addGoal(goal)
+	}
+	
+	override suspend fun deleteGoal(id: Int) {
+		goalDao.deleteGoal(id)
 	}
 	
 }

@@ -17,4 +17,7 @@ interface GoalDao {
 	@Insert
 	suspend fun addGoal(goal: Goal)
 	
+	@Query("DELETE FROM ${Constants.TABLE_GOALS_NAME} WHERE id = :id")
+	suspend fun deleteGoal(id: Int)
+	
 }
