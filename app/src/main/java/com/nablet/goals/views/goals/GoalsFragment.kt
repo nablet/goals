@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nablet.goals.MainViewModel
 import com.nablet.goals.R
+import com.nablet.goals.databinding.DialogAddNewGoalBinding
 import com.nablet.goals.databinding.FragmentGoalsBinding
 import com.pawegio.kandroid.e
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,16 +24,17 @@ class GoalsFragment : Fragment() {
 	private lateinit var adapter: GoalsAdapter
 	
 	override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+		inflater: LayoutInflater,
+		container: ViewGroup?,
+		savedInstanceState: Bundle?
+	): View {
 		val binding = DataBindingUtil.inflate<FragmentGoalsBinding>(
-            inflater,
-            R.layout.fragment_goals,
-            container,
-            false
-        )
+			inflater,
+			R.layout.fragment_goals,
+			container,
+			false
+		)
+		binding.view = this
 		binding.viewModel = viewModel
 		binding.lifecycleOwner = viewLifecycleOwner
 		
@@ -53,5 +56,14 @@ class GoalsFragment : Fragment() {
 			e(it.toString())
 			adapter.submitList(it)
 		})
+	}
+	
+	fun onClickAddGoal() {
+		val dialog = AlertDialog.Builder(requireContext()).create()
+		val view = DialogAddNewGoalBinding.inflate(layoutInflater)
+		dialog.apply {
+			setView(view.root)
+			show()
+		}
 	}
 }

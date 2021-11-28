@@ -2,7 +2,7 @@ package com.nablet.goals.hilt
 
 import android.content.Context
 import androidx.room.Room
-import com.nablet.goals.models.Constants
+import com.nablet.goals.models.Constants.GoalsDatabase.DATABASE_NAME
 import com.nablet.goals.repository.room.GoalDao
 import com.nablet.goals.repository.room.GoalDatabase
 import dagger.Module
@@ -23,7 +23,7 @@ object DatabaseModule {
 		return Room.databaseBuilder(
 			context.applicationContext,
 			GoalDatabase::class.java,
-			Constants.DATABASE_NAME
+			DATABASE_NAME
 		).fallbackToDestructiveMigration().build()
 	}
 	

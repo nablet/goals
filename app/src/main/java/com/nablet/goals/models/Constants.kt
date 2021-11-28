@@ -2,6 +2,17 @@ package com.nablet.goals.models
 
 
 object Constants {
-	const val DATABASE_NAME = "goals_db"
-	const val TABLE_GOALS_NAME = "table_goals"
+	
+	object GoalsDatabase {
+		// General
+		const val DATABASE_NAME = "goals_db"
+		const val TABLE_NAME = "table_goals"
+		
+		// Fields
+		const val TITLE = "title"
+		const val DETAILS = "details"
+		const val IS_ACHIEVED = "is_achieved"
+		const val ID = "id"
+		const val DATE_ADDED = "date_added"
+	}
 }

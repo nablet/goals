@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Goals!</string>
     <string name="settings">Settings</string>
+
+    <string name="edt_goal_title_hint">What is the goal?</string>
+    <string name="edt_goal_details_hint">Some details maybe?</string>
+    <string name="add_goal_dialog_title">New Goal!</string>
+    <string name="btn_create_goal_text">Add to list!</string>
 </resources>
