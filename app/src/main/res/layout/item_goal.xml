@@ -14,22 +14,25 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txv_1"
+            android:id="@+id/txv_goal_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@{goal.title}"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txv_2"
+            android:id="@+id/txv_goal_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/txv_1" />
+            android:text="@{goal.details}"
+            app:layout_constraintTop_toBottomOf="@id/txv_goal_title" />
 
         <TextView
-            android:id="@+id/txv_3"
+            android:id="@+id/txv_date_created"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/txv_2" />
+            app:dateCreatedFormatted="@{goal.dateAdded}"
+            app:layout_constraintTop_toBottomOf="@id/txv_goal_details" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

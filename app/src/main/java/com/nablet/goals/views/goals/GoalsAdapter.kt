@@ -8,15 +8,15 @@ import com.nablet.goals.databinding.ItemGoalBinding
 import com.nablet.goals.models.Goal
 import com.pawegio.kandroid.layoutInflater
 
+
 class GoalsAdapter : ListAdapter<Goal, GoalsAdapter.GoalViewHolder>(GoalsDiffCallback()) {
 	
 	inner class GoalViewHolder(
 		private val binding: ItemGoalBinding
 	) : RecyclerView.ViewHolder(binding.root) {
 		fun bind(goalItem: Goal) {
-			binding.txv1.text = goalItem.id.toString()
-			binding.txv2.text = goalItem.title
-			binding.txv3.text = goalItem.details
+			binding.goal = goalItem
+			binding.executePendingBindings()
 		}
 	}
 	
