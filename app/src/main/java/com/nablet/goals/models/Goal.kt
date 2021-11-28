@@ -20,9 +20,7 @@ data class Goal(
 	@ColumnInfo(name = TITLE)
 	val title: String,
 	@ColumnInfo(name = DETAILS)
-	val details: String,
-	@ColumnInfo(name = IS_ACHIEVED)
-	val isAchieved: Boolean
+	val details: String
 ) {
 	
 	@PrimaryKey(autoGenerate = true)
@@ -31,4 +29,7 @@ data class Goal(
 	
 	@ColumnInfo(name = DATE_ADDED)
 	var dateAdded: Long = System.currentTimeMillis()
+	
+	@ColumnInfo(name = IS_ACHIEVED)
+	var isAchieved: Boolean = false
 }
