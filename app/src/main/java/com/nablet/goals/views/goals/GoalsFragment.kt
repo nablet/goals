@@ -58,7 +58,7 @@ class GoalsFragment : Fragment() {
 		})
 	}
 	
-	fun onClickAddGoal() {
+	fun openAddGoalDialog() {
 		val dialog = AlertDialog.Builder(requireContext()).create()
 		val view = DialogAddNewGoalBinding.inflate(layoutInflater)
 		dialog.apply {

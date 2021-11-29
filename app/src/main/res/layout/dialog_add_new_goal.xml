@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:text="@string/btn_create_goal_text"
-            android:onClick="@{() -> viewModel.addGoal(edtGoalName.text.toString(), edtGoalDetails.text.toString())}"
+            android:onClick="@{() -> viewModel.addGoal(edtGoalName.getText().toString(), edtGoalDetails.getText().toString())}"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
