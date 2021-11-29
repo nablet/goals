@@ -46,7 +46,7 @@ class GoalsFragment : Fragment() {
 	
 	private fun setupViews(binding: FragmentGoalsBinding) {
 		// Setup goals recyclerview
-		adapter = GoalsAdapter()
+		adapter = GoalsAdapter { viewModel.delete(goal = it) }
 		binding.rcvGoals.layoutManager = LinearLayoutManager(context)
 		binding.rcvGoals.adapter = adapter
 	}

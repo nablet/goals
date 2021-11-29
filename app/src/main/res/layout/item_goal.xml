@@ -4,14 +4,22 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="goal"
             type="com.nablet.goals.models.Goal" />
+
+        <variable
+            name="viewHolder"
+            type="com.nablet.goals.views.goals.GoalsAdapter.GoalViewHolder" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:onLongClick="@{() -> viewHolder.onLongClickDelete(goal)}"
+        android:padding="12dp">
 
         <TextView
             android:id="@+id/txv_goal_title"
@@ -24,7 +32,8 @@
             android:id="@+id/txv_goal_details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{goal.details}"
+            android:text='@{"Details: " + goal.details}'
+            android:visibility="@{goal.details.length() == 0 ? View.GONE : View.VISIBLE}"
             app:layout_constraintTop_toBottomOf="@id/txv_goal_title" />
 
         <TextView

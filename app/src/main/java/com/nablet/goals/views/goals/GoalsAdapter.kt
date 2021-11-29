@@ -9,12 +9,16 @@ import com.nablet.goals.models.Goal
 import com.pawegio.kandroid.layoutInflater
 
 
-class GoalsAdapter : ListAdapter<Goal, GoalsAdapter.GoalViewHolder>(GoalsDiffCallback()) {
+class GoalsAdapter(
+	val deleteCallback: (goal: Goal) -> Unit
+) : ListAdapter<Goal, GoalsAdapter.GoalViewHolder>(GoalsDiffCallback()) {
 	
 	inner class GoalViewHolder(
 		private val binding: ItemGoalBinding
 	) : RecyclerView.ViewHolder(binding.root) {
+		fun onLongClickDelete(goal: Goal) = deleteCallback(goal)
 		fun bind(goalItem: Goal) {
+			binding.viewHolder = this
 			binding.goal = goalItem
 			binding.executePendingBindings()
 		}
