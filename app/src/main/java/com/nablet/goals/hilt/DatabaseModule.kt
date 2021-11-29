@@ -3,8 +3,8 @@ package com.nablet.goals.hilt
 import android.content.Context
 import androidx.room.Room
 import com.nablet.goals.models.Constants.GoalsDatabase.DATABASE_NAME
-import com.nablet.goals.repository.room.GoalDao
-import com.nablet.goals.repository.room.GoalDatabase
+import com.nablet.goals.repository.goals_db.GoalDao
+import com.nablet.goals.repository.goals_db.GoalDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,7 +1,7 @@
 package com.nablet.goals.repository
 
 import com.nablet.goals.models.Goal
-import com.nablet.goals.repository.room.GoalDao
+import com.nablet.goals.repository.goals_db.GoalDao
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

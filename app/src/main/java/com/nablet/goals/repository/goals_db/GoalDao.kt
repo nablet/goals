@@ -1,9 +1,8 @@
-package com.nablet.goals.repository.room
+package com.nablet.goals.repository.goals_db
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.nablet.goals.models.Constants
 import com.nablet.goals.models.Constants.GoalsDatabase.TABLE_NAME
 import com.nablet.goals.models.Goal
 import kotlinx.coroutines.flow.Flow
