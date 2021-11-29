@@ -62,6 +62,7 @@ class GoalsFragment : Fragment() {
 		val dialog = AlertDialog.Builder(requireContext()).create()
 		val view = DialogAddNewGoalBinding.inflate(layoutInflater)
 		dialog.apply {
+			view.viewModel = viewModel
 			setView(view.root)
 			show()
 		}

@@ -19,8 +19,9 @@ class MainViewModel @Inject constructor(
 	val goals: LiveData<List<Goal>>
 		get() = repository.goals.asLiveData()
 	
-	fun addGoal(goal: Goal) = viewModelScope.launch {
-		repository.addGoal(goal)
+	fun addGoal(title: String, details: String) = viewModelScope.launch {
+		if (goals.value?.map { it.title }?.contains(title) == true) return@launch
+		repository.addGoal(Goal(title, details))
 	}
 	
 	fun delete(id: Int? = null, goal: Goal? = null) = viewModelScope.launch {
