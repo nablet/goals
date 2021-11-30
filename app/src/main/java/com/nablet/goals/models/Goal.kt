@@ -12,10 +12,7 @@ import com.nablet.goals.models.Constants.GoalsDatabase.TABLE_NAME
 import com.nablet.goals.models.Constants.GoalsDatabase.TITLE
 
 
-@Entity(
-	tableName = TABLE_NAME,
-	indices = [Index(value = [TITLE], unique = true)]
-)
+@Entity(tableName = TABLE_NAME)
 data class Goal(
 	@ColumnInfo(name = TITLE)
 	val title: String,

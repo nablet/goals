@@ -14,6 +14,9 @@ interface GoalDao {
 	@Query("SELECT * FROM $TABLE_NAME")
 	fun getGoals(): Flow<List<Goal>>
 	
+	@Query("SELECT EXISTS(SELECT 1 FROM $TABLE_NAME WHERE title = :title LIMIT 1)")
+	suspend fun existsInTable(title: String): Int
+	
 	@Insert
 	suspend fun addGoal(goal: Goal)
 	

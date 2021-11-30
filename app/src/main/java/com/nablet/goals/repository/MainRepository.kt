@@ -8,6 +8,7 @@ import javax.inject.Inject
 
 interface MainRepository {
 	val goals: Flow<List<Goal>>
+	suspend fun existsInTable(title: String): Boolean
 	suspend fun addGoal(goal: Goal)
 	suspend fun deleteGoal(id: Int)
 }
@@ -18,6 +19,10 @@ class MainRepositoryImpl @Inject constructor(
 	
 	override val goals: Flow<List<Goal>>
 		get() = goalDao.getGoals()
+	
+	override suspend fun existsInTable(title: String): Boolean {
+		return goalDao.existsInTable(title) == 1
+	}
 	
 	override suspend fun addGoal(goal: Goal) {
 		goalDao.addGoal(goal)
