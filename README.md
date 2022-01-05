@@ -11,6 +11,9 @@ Technologies:
 
 <br>
 
+TODO:
+- Daily/Monthly tasks (tabs)
+
 TODO maybe:
 - Search function in Goals List
 - Add settings:
