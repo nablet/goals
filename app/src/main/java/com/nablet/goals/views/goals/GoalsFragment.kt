@@ -20,25 +20,14 @@ class GoalsFragment : ViewBindingFragment<FragmentGoalsBinding>() {
 		get() = FragmentGoalsBinding::inflate
 	
 	private val viewModel: MainViewModel by viewModels()
+	private var addGoalDialog: AlertDialog? = null
 	private lateinit var adapter: GoalsAdapter
 	
 	override fun setup() {
 		binding.view = this
 		binding.viewModel = viewModel
 		binding.lifecycleOwner = viewLifecycleOwner
-		
-		setupViews(binding)
-	}
-	
-	private fun setupViews(binding: FragmentGoalsBinding) {
-		// Setup goals recyclerview
-		adapter = GoalsAdapter { viewModel.delete(goal = it) }
-		binding.rcvGoals.layoutManager = LinearLayoutManager(context)
-		binding.rcvGoals.adapter = adapter
-		
-		viewModel.goals.observeWithLifecycle(viewLifecycleOwner) {
-			adapter.submitList(it)
-		}
+		setupGoalsList()
 	}
 	
 	fun openAddGoalDialog() {
@@ -48,6 +37,20 @@ class GoalsFragment : ViewBindingFragment<FragmentGoalsBinding>() {
 			view.viewModel = viewModel
 			setView(view.root)
 			show()
+			addGoalDialog = this
 		}
 	}
+	
+	private fun setupGoalsList() {
+		// Setup goals recyclerview
+		adapter = GoalsAdapter { viewModel.delete(goal = it) }
+		binding.rcvGoals.layoutManager = LinearLayoutManager(context)
+		binding.rcvGoals.adapter = adapter
+		
+		viewModel.goals.observeWithLifecycle(viewLifecycleOwner) {
+			adapter.submitList(it)
+			addGoalDialog?.dismiss()
+		}
+	}
+	
 }

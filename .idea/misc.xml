@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/dialog_add_new_goal.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_goals.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/layout/item_goal.xml" value="0.28229166666666666" />
       </map>
