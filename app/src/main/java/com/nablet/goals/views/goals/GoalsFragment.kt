@@ -3,8 +3,10 @@ package com.nablet.goals.views.goals
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.card.MaterialCardView
 import com.nablet.goals.MainViewModel
 import com.nablet.goals.commons.bases.ViewBindingFragment
 import com.nablet.goals.commons.utils.observeWithLifecycle
@@ -43,7 +45,10 @@ class GoalsFragment : ViewBindingFragment<FragmentGoalsBinding>() {
 	
 	private fun setupGoalsList() {
 		// Setup goals recyclerview
-		adapter = GoalsAdapter { viewModel.delete(goal = it) }
+		adapter = GoalsAdapter(
+			onClickCallback = {  },
+			deleteCallback = { viewModel.delete(goal = it) }
+		)
 		binding.rcvGoals.layoutManager = LinearLayoutManager(context)
 		binding.rcvGoals.adapter = adapter
 		

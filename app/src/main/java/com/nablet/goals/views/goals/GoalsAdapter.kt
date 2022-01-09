@@ -4,19 +4,33 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.nablet.goals.databinding.ItemGoalBinding
 import com.nablet.goals.models.Goal
 import com.pawegio.kandroid.layoutInflater
 
 
 class GoalsAdapter(
-	val deleteCallback: (goal: Goal) -> Unit
+	val deleteCallback: (goal: Goal) -> Unit,
+	val onClickCallback: (goal: Goal) -> Unit,
 ) : ListAdapter<Goal, GoalsAdapter.GoalViewHolder>(GoalsDiffCallback()) {
 	
 	inner class GoalViewHolder(
 		private val binding: ItemGoalBinding
 	) : RecyclerView.ViewHolder(binding.root) {
-		fun onLongClickDelete(goal: Goal) = deleteCallback(goal)
+		
+		fun onLongClickDelete(goal: Goal) {
+			deleteCallback(goal)
+		}
+		
+		fun onClick(goal: Goal) {
+			onClickCallback(goal)
+		}
+		
+		fun toggleCheck(view: MaterialCardView) {
+			view.isChecked = !view.isChecked
+		}
+		
 		fun bind(goalItem: Goal) {
 			binding.viewHolder = this
 			binding.goal = goalItem

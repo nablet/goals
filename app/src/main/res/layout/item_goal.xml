@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -15,33 +16,56 @@
             type="com.nablet.goals.views.goals.GoalsAdapter.GoalViewHolder" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:onLongClick="@{() -> viewHolder.onLongClickDelete(goal)}"
-        android:padding="12dp">
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="6dp"
+        android:checkable="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{() -> viewHolder.onClick(goal)}"
+        app:cardCornerRadius="12dp"
+        app:onLongClick="@{() -> viewHolder.toggleCheck(mcv)}">
 
-        <TextView
-            android:id="@+id/txv_goal_title"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{goal.title}"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:padding="12dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp">
 
-        <TextView
-            android:id="@+id/txv_goal_details"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text='@{"Details: " + goal.details}'
-            android:visibility="@{goal.details.length() == 0 ? View.GONE : View.VISIBLE}"
-            app:layout_constraintTop_toBottomOf="@id/txv_goal_title" />
+            <TextView
+                android:id="@+id/txv_goal_title"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/qanelassoft_medium"
+                android:text="@{goal.title}"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Goal title" />
 
-        <TextView
-            android:id="@+id/txv_date_created"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:dateCreatedFormatted="@{goal.dateAdded}"
-            app:layout_constraintTop_toBottomOf="@id/txv_goal_details" />
+            <TextView
+                android:id="@+id/txv_goal_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{`Details: ` + goal.details}"
+                android:visibility="@{goal.details.length() == 0 ? View.GONE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/txv_goal_title"
+                tools:text="Goal description" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/txv_date_created"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dateCreatedFormatted="@{goal.dateAdded}"
+                app:layout_constraintTop_toBottomOf="@id/txv_goal_details"
+                tools:text="Date created" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 </layout>
