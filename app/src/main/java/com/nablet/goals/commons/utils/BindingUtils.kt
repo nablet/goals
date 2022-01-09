@@ -1,4 +1,4 @@
-package com.nablet.goals.utils
+package com.nablet.goals.commons.utils
 
 import android.view.View
 import android.widget.TextView

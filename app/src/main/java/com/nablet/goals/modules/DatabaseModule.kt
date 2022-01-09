@@ -1,4 +1,4 @@
-package com.nablet.goals.hilt
+package com.nablet.goals.modules
 
 import android.content.Context
 import androidx.room.Room

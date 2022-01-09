@@ -1,4 +1,4 @@
-package com.nablet.goals.utils
+package com.nablet.goals.commons.utils
 
 import java.text.SimpleDateFormat
 import java.util.*

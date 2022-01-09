@@ -1,4 +1,4 @@
-package com.nablet.goals.hilt
+package com.nablet.goals.modules
 
 import com.nablet.goals.repository.MainRepository
 import com.nablet.goals.repository.MainRepositoryImpl

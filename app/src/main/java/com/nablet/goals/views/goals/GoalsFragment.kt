@@ -1,47 +1,33 @@
 package com.nablet.goals.views.goals
 
-import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nablet.goals.MainViewModel
-import com.nablet.goals.R
+import com.nablet.goals.commons.bases.ViewBindingFragment
+import com.nablet.goals.commons.utils.observeWithLifecycle
 import com.nablet.goals.databinding.DialogAddNewGoalBinding
 import com.nablet.goals.databinding.FragmentGoalsBinding
-import com.pawegio.kandroid.e
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class GoalsFragment : Fragment() {
+class GoalsFragment : ViewBindingFragment<FragmentGoalsBinding>() {
+	
+	override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentGoalsBinding
+		get() = FragmentGoalsBinding::inflate
 	
 	private val viewModel: MainViewModel by viewModels()
 	private lateinit var adapter: GoalsAdapter
 	
-	override fun onCreateView(
-		inflater: LayoutInflater,
-		container: ViewGroup?,
-		savedInstanceState: Bundle?
-	): View {
-		val binding = DataBindingUtil.inflate<FragmentGoalsBinding>(
-			inflater,
-			R.layout.fragment_goals,
-			container,
-			false
-		)
+	override fun setup() {
 		binding.view = this
 		binding.viewModel = viewModel
 		binding.lifecycleOwner = viewLifecycleOwner
 		
 		setupViews(binding)
-		setupObservers()
-		
-		return binding.root
 	}
 	
 	private fun setupViews(binding: FragmentGoalsBinding) {
@@ -49,13 +35,10 @@ class GoalsFragment : Fragment() {
 		adapter = GoalsAdapter { viewModel.delete(goal = it) }
 		binding.rcvGoals.layoutManager = LinearLayoutManager(context)
 		binding.rcvGoals.adapter = adapter
-	}
-	
-	private fun setupObservers() {
-		viewModel.goals.observe(viewLifecycleOwner, {
-			e(it.toString())
+		
+		viewModel.goals.observeWithLifecycle(viewLifecycleOwner) {
 			adapter.submitList(it)
-		})
+		}
 	}
 	
 	fun openAddGoalDialog() {

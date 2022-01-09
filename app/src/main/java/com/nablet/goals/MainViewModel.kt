@@ -1,12 +1,13 @@
 package com.nablet.goals
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.nablet.goals.models.Goal
 import com.nablet.goals.repository.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -16,8 +17,8 @@ class MainViewModel @Inject constructor(
 	private val repository: MainRepository
 ) : ViewModel() {
 	
-	val goals: LiveData<List<Goal>>
-		get() = repository.goals.asLiveData()
+	val goals: StateFlow<List<Goal>?>
+		get() = repository.goals.stateIn(viewModelScope, SharingStarted.Lazily, null)
 	
 	fun addGoal(title: String, details: String) = viewModelScope.launch {
 		if (goals.value?.map { it.title }?.contains(title) == true) return@launch
