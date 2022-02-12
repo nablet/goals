@@ -1,4 +1,4 @@
-# goals (discontinued - will go with nablet/Objectives: Mutliplatform project)
+# goals (discontinued - will go with nablet/MyTasks: Mutliplatform project)
 Set goals and priorities
 
 <br>
